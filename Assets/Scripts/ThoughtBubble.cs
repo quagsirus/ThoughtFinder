@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[ExecuteAlways]
 public class ThoughtBubble : MonoBehaviour
 {
     private PlayerController _playerController;
