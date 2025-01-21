@@ -872,37 +872,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 355618269456400985, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: -4755563157083878473, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
     - target: {fileID: 2757213013572050973, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
       propertyPath: m_Name
       value: Yapper
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757213013572050973, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_TagString
-      value: Yapper
-      objectReference: {fileID: 0}
-    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
-    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4755563157083878473, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
-    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3392921976816960075, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8017016857122844112, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
       propertyPath: m_LocalPosition.x
