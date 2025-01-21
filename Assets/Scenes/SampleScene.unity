@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -392,6 +393,18 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ea646ef8d330441ac92d7f0c65d9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,9 +872,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 355618269456400985, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -4755563157083878473, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
     - target: {fileID: 2757213013572050973, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
       propertyPath: m_Name
       value: Yapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757213013572050973, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_TagString
+      value: Yapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
+    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4755563157083878473, guid: e0b6e128990eae549b0de5c23acabb63, type: 2}
+    - target: {fileID: 3243616871897044636, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392921976816960075, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8017016857122844112, guid: 665af3c135db52e4a942ecb9dac449cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -919,6 +960,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2379599894414923623, guid: a6269151198de764cb77ffca488572f0, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3829948431171337146, guid: a6269151198de764cb77ffca488572f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.46
