@@ -1,4 +1,3 @@
-using System;
 using Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,9 +7,11 @@ namespace Player
     public class PlayerController : MonoBehaviour, Inputs.IPlayerActions
     {
         private Rigidbody _rb;
+        
         private Inputs _inputs;
+        private Vector2 _movement;
 
-        private void Start()
+        private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             
@@ -30,7 +31,7 @@ namespace Player
 
         void Inputs.IPlayerActions.OnMove(InputAction.CallbackContext context)
         {
-            _rb.AddForce(context.ReadValue<Vector2>());
+            _movement = context.ReadValue<Vector2>() * 20;
         }
 
         void Inputs.IPlayerActions.OnLook(InputAction.CallbackContext context)
@@ -55,7 +56,10 @@ namespace Player
 
         private void Update()
         {
-            
+            if (_movement != Vector2.zero)
+            {
+                _rb.AddForce(_movement);
+            }
         }
     }
 }
