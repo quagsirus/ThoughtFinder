@@ -13,6 +13,7 @@ public class ThoughtBubble : MonoBehaviour
     [SerializeField] private TMP_Text textTMP;
     [SerializeField] private GameObject text;
     [SerializeField] private int displayDistance = 20;
+    [SerializeField] private Animator animator;
     void Start()
     {
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -25,28 +26,24 @@ public class ThoughtBubble : MonoBehaviour
             if (!revealingText)
             {
                 revealingText = true;
-                transform.localScale = new Vector3(0.1f, 1, 0.1f);
                 _revealCoroutine = StartCoroutine(RevealText());
+                animator.Play("FillBubble");
             }
         }
         else
         {
             if (_revealCoroutine != null) StopCoroutine(_revealCoroutine);
-            transform.localScale = new Vector3(0.1f, 1, 0.1f);
             revealingText = false;
-            textTMP.text = "...";
+            textTMP.text = "";
+            animator.Play("EmptyBubble");
         }
         transform.LookAt(new Vector3(_playerController.transform.position.x, transform.position.y, _playerController.transform.position.z));
     }
 
     private IEnumerator RevealText()
     {
-        while (transform.localScale.magnitude < Vector3.one.magnitude)
-        {
-            transform.localScale += new Vector3(1, 0, 1) * Time.deltaTime;
-            yield return null;
-        }
         textTMP.text = "";
+        yield return new WaitForSeconds(0.8f);
         foreach (char c in yapText)
         {
             textTMP.text += c.ToString();
