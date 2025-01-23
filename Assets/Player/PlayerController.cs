@@ -7,21 +7,26 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour, Inputs.IPlayerActions
     {
-        [SerializeField] private new CharacterController characterController;
+        [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform cameraTransform;
         
         private Inputs _inputs;
         private Vector2 _look;
         private Vector2 _movement;
 
+        [SerializeField] private float gravity;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
-        private float _speed;
+        [SerializeField] private float lookSensitivity;
+        private float _movementSpeed;
+        private float _verticalVelocity = 0f;
 
         private void Awake()
         {
             _inputs = new Inputs();
             _inputs.Player.SetCallbacks(this);
+            
+            _movementSpeed = walkSpeed;
         }
 
         private void OnEnable() => _inputs.Player.Enable();
@@ -32,14 +37,15 @@ namespace Player
         {
             if (_movement != Vector2.zero)
             {
-                var localisedMovement = transform.right * _movement.x
-                                             + transform.forward * _movement.y;
-                characterController.Move(localisedMovement * (Time.deltaTime * _speed));
+                var velocity = transform.right * (_movement.x * _movementSpeed)
+                                    + transform.forward * (_movement.y * _movementSpeed)
+                                    + Vector3.down * _verticalVelocity;
+                characterController.Move(velocity * Time.deltaTime);
             }
 
             if (_look != Vector2.zero)
             {
-                //rigidbody.rotation *= Quaternion.Euler(0, _look.x * Time.deltaTime, 0);
+                transform.Rotate(Vector3.up * _look.x * lookSensitivity);
                 cameraTransform.rotation *= Quaternion.Euler(-_look.y * Time.deltaTime, 0, 0);
             }
         }
@@ -67,7 +73,7 @@ namespace Player
 
         void Inputs.IPlayerActions.OnSprint(InputAction.CallbackContext context)
         {
-            _speed = context.ReadValue<bool>() ? runSpeed : walkSpeed;
+            _movementSpeed = context.ReadValue<bool>() ? runSpeed : walkSpeed;
         }
         #endregion
     }
