@@ -13,6 +13,7 @@ namespace Player
         private Vector2 _look;
         private Vector2 _movement;
 
+        [SerializeField] private float downForce;
         [SerializeField] private float gravity;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
@@ -34,7 +35,7 @@ namespace Player
 
         private void Update()
         {
-            if (_movement != Vector2.zero)
+            if (_movement != Vector2.zero || !characterController.isGrounded)
             {
                 var velocity = transform.right * (_movement.x * _movementSpeed)
                                     + transform.forward * (_movement.y * _movementSpeed)
@@ -46,6 +47,11 @@ namespace Player
             {
                 transform.Rotate(Vector3.up * (_look.x * lookSensitivity));
                 cameraTransform.rotation *= Quaternion.Euler(-_look.y * Time.deltaTime, 0, 0);
+            }
+
+            if (!Mathf.Approximately(_verticalVelocity, downForce))
+            {
+                _verticalVelocity = characterController.isGrounded ? downForce : _verticalVelocity + gravity * Time.deltaTime;
             }
         }
         
@@ -69,7 +75,7 @@ namespace Player
         {
             if (!context.ReadValueAsButton()) return;
             if (!characterController.isGrounded) return;
-            _verticalVelocity += 10;
+            _verticalVelocity = 10;
         }
 
         void Inputs.IPlayerActions.OnSprint(InputAction.CallbackContext context)

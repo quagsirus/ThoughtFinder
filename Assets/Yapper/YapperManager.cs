@@ -21,6 +21,7 @@ namespace Yapper
             foreach (GameObject yapperObj in yapperObjects)
             {
                 string fullSpeech = "";
+                break;
                 
                 while (true)
                 {
