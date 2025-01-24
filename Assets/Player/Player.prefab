@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceMaterials: []
-  tShirtMaterials: []
   shoesMaterials: []
   skinMaterials: []
+  tShirtMaterials: []
   hairObjects: []
   hatObjects: []
