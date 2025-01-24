@@ -7,6 +7,8 @@ namespace Yapper
     public class YapperManager : MonoBehaviour
     {
         public YapperData CorrectYapper;
+        public int incorrectGuesses = 0;
+        
         private readonly List<YapperData> _allYappers = new();
         [SerializeField] private ThoughtBubble fountainBubble;
         

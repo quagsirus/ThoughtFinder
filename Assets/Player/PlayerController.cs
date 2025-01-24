@@ -72,7 +72,18 @@ namespace Player
 
         void Inputs.IPlayerActions.OnInteract(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            GameObject[] yappers = GameObject.FindGameObjectsWithTag("Yapper");
+            GameObject closestYapper = null;
+            float closestDistance = float.MaxValue;
+            foreach (var yapper in yappers)
+            {
+                if (Vector3.Distance(yapper.transform.position, cameraTransform.position) < closestDistance)
+                {
+                    closestYapper = yapper;
+                    closestDistance = Vector3.Distance(yapper.transform.position, cameraTransform.position);
+                }
+            }
+            closestYapper.GetComponentInChildren<ThoughtBubble>().CheckYap();
         }
 
         void Inputs.IPlayerActions.OnJump(InputAction.CallbackContext context)
