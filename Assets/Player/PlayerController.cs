@@ -35,8 +35,9 @@ namespace Player
 
         private void Update()
         {
-            if (_movement != Vector2.zero || !characterController.isGrounded)
+            if (_movement != Vector2.zero || !Mathf.Approximately(_verticalVelocity, downForce))
             {
+                _verticalVelocity = characterController.isGrounded ? downForce : _verticalVelocity + gravity * Time.deltaTime;
                 var velocity = transform.right * (_movement.x * _movementSpeed)
                                     + transform.forward * (_movement.y * _movementSpeed)
                                     + Vector3.up * _verticalVelocity;
@@ -47,11 +48,6 @@ namespace Player
             {
                 transform.Rotate(Vector3.up * (_look.x * lookSensitivity));
                 cameraTransform.rotation *= Quaternion.Euler(-_look.y * Time.deltaTime, 0, 0);
-            }
-
-            if (!Mathf.Approximately(_verticalVelocity, downForce))
-            {
-                _verticalVelocity = characterController.isGrounded ? downForce : _verticalVelocity + gravity * Time.deltaTime;
             }
         }
         
