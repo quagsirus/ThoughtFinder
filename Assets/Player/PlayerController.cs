@@ -22,6 +22,7 @@ namespace Player
         [SerializeField] private float lookSensitivity;
         private float _movementSpeed;
         private float _verticalVelocity = 0f;
+        private float _cameraXRotation = 0f;
 
         private void Awake()
         {
@@ -50,7 +51,11 @@ namespace Player
             if (_look != Vector2.zero)
             {
                 transform.Rotate(Vector3.up * (_look.x * lookSensitivity * Time.deltaTime));
-                cameraTransform.Rotate(Vector3.left * (_look.y * lookSensitivity * Time.deltaTime));
+                
+                // idk what is going on here, feels jittery but dont know how to constrain rotation without euler
+                //cameraTransform.Rotate(Vector3.left * (_look.y * lookSensitivity * Time.deltaTime));
+                _cameraXRotation = Mathf.Clamp(_cameraXRotation - _look.y * lookSensitivity * Time.deltaTime, -90f, 40f);
+                cameraTransform.localRotation = Quaternion.Euler(_cameraXRotation, 0, 0);
             }
         }
         
