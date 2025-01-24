@@ -1,6 +1,7 @@
 using Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yapper;
 
 namespace Player
 {
@@ -8,6 +9,7 @@ namespace Player
     {
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform cameraTransform;
+        [SerializeField] private YapperManager yapperManager;
         
         private Inputs _inputs;
         private Vector2 _look;
@@ -65,7 +67,7 @@ namespace Player
 
         void Inputs.IPlayerActions.OnInteract(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         void Inputs.IPlayerActions.OnJump(InputAction.CallbackContext context)

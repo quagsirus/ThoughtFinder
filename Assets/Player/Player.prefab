@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1640199750564012395}
   - component: {fileID: 7653276724875577874}
   - component: {fileID: 7382001386012672186}
-  - component: {fileID: 7926313226406827413}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -138,24 +137,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &7926313226406827413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763882521328535166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ea646ef8d330441ac92d7f0c65d9c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceMaterials: []
-  tShirtMaterials: []
-  shoesMaterials: []
-  skinMaterials: []
-  hairObjects: []
-  hatObjects: []
 --- !u!1 &7037603478496232654
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +151,7 @@ GameObject:
   - component: {fileID: 7154661755528948164}
   - component: {fileID: 2596110942159528511}
   - component: {fileID: 4523023399713012151}
+  - component: {fileID: 360605898398004199}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -283,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 4523023399713012151}
   cameraTransform: {fileID: 6022329268392633995}
+  yapperManager: {fileID: 360605898398004199}
   downForce: -0.5
   gravity: -35
   walkSpeed: 10
@@ -313,3 +296,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &360605898398004199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037603478496232654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ea646ef8d330441ac92d7f0c65d9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceMaterials: []
+  tShirtMaterials: []
+  shoesMaterials: []
+  skinMaterials: []
+  hairObjects: []
+  hatObjects: []
