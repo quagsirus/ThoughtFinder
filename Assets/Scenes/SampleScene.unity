@@ -405,38 +405,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 349204384970278062, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 37dcd986ae9254d40a1f06837defe021, type: 2}
-    - target: {fileID: 349204384970278062, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 8292ff68dac254a428357715e134f081, type: 2}
-    - target: {fileID: 349204384970278062, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 11137e3b97ccdca4d899ca20f88f0d2b, type: 2}
-    - target: {fileID: 766234333587310362, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 6222511142818720037, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: m_Name
-      value: HeadBone
-      objectReference: {fileID: 0}
-    - target: {fileID: 6765734941221598906, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 192f9b80bb6c49c48a7422fde9ef6b5d, type: 2}
     - target: {fileID: 7487303064705227985, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
       propertyPath: m_Name
-      value: YapperModel
+      value: Yapper
       objectReference: {fileID: 0}
-    - target: {fileID: 7658650881581359211, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 8e5ae9f99b2a25a4b903125aab18593f, type: 2}
     - target: {fileID: 7828363203070559851, guid: dc566fb7ebdee2f47b6435900f0c3046, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
