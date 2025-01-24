@@ -12,14 +12,14 @@ namespace Yapper
         private readonly List<YapperData> _allYappers = new();
         private ThoughtBubble _fountainBubble;
         
-        [SerializeField] private Material[] faceMaterials, shoesMaterials, skinMaterials, tShirtMaterials;
+        [SerializeField] private Material[] faceMaterials, hairMaterials, shoesMaterials, skinMaterials, tShirtMaterials;
         [SerializeField] private GameObject[] hairObjects, hatObjects;
 
         private void Awake()
         {
             _fountainBubble = GameObject.FindWithTag("FountainBubble").GetComponent<ThoughtBubble>();
             GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
-            Material face, shoes, shirt, skin;
+            Material face, hairColour, shoes, shirt, skin;
             GameObject hair, hat;
             foreach (GameObject yapperObj in yapperObjects)
             {
@@ -38,10 +38,12 @@ namespace Yapper
                     shoes = shoesMaterials[Random.Range(0,shoesMaterials.Length)];
                     skin = skinMaterials[Random.Range(0,skinMaterials.Length)];
                     hair = hairObjects[Random.Range(0,hairObjects.Length)];
+                    hairColour = hairMaterials[Random.Range(0, hairMaterials.Length)];
                     hat = hatObjects[Random.Range(0,hatObjects.Length)];
                     if (!_allYappers.Any(yapper => (yapper.Face == face &&
                                                    yapper.Shoes == shoes &&
                                                    yapper.Hair == hair &&
+                                                   yapper.HairColour == hairColour &&
                                                    yapper.Hat == hat &&
                                                    yapper.Shirt == shirt &&
                                                    yapper.Skin == skin) ||
@@ -49,7 +51,7 @@ namespace Yapper
                 }
                 ThoughtBubble tBubble = yapperObj.GetComponentInChildren<ThoughtBubble>();
                 tBubble.SetYap(fullSpeech);
-                yapperObj.GetComponent<YapperBuilder>().BuildYapper(face, shirt, shoes, skin, hair, hat);
+                yapperObj.GetComponent<YapperBuilder>().BuildYapper(face, hairColour, shirt, shoes, skin, hair, hat);
                 _allYappers.Add(new YapperData
                 {
                     Person = yapperObj,
@@ -59,6 +61,7 @@ namespace Yapper
                     Shoes = shoes,
                     Skin = skin,
                     Hair = hair,
+                    HairColour = hairColour,
                     Hat = hat,
                 });
             }
@@ -71,7 +74,7 @@ namespace Yapper
     {
         public GameObject Person;
         public string Speech;
-        public Material Face, Shirt, Shoes, Skin;
+        public Material Face, HairColour, Shirt, Shoes, Skin;
         public GameObject Hair, Hat;
     }
 }

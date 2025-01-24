@@ -265,7 +265,7 @@ MonoBehaviour:
   gravity: -35
   walkSpeed: 10
   runSpeed: 17.5
-  lookSensitivity: 8
+  lookSensitivity: 20
 --- !u!143 &1016586020641583733
 CharacterController:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ea646ef8d330441ac92d7f0c65d9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  incorrectGuesses: 0
   faceMaterials:
   - {fileID: 2100000, guid: 9b3c0f4d792d2d24798f59b53ddfb7a4, type: 2}
   - {fileID: 2100000, guid: 3d0f21614ddc77045874c61dc2c76617, type: 2}
@@ -323,6 +324,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7ad4a15cebb8d784c814dc9e0d0ac720, type: 2}
   - {fileID: 2100000, guid: 389829bd07e1b994fa05fc1d8914af47, type: 2}
   - {fileID: 2100000, guid: 09c8f5049369ab445a5c6025b8ab16b0, type: 2}
+  hairMaterials:
+  - {fileID: 2100000, guid: e4a41a783b74c8b4ab0222566acbb50f, type: 2}
+  - {fileID: 2100000, guid: 1f396f64150f6174884ef359c4f1f30d, type: 2}
+  - {fileID: 2100000, guid: 08fc606e94d24104b8b09b73f98d59e8, type: 2}
+  - {fileID: 2100000, guid: 2eb35770a54cfa144a1491a07160f9e9, type: 2}
+  - {fileID: 2100000, guid: e9bbf145ef44504439d4412fce627f60, type: 2}
   shoesMaterials:
   - {fileID: 2100000, guid: 37dcd986ae9254d40a1f06837defe021, type: 2}
   - {fileID: 2100000, guid: 2942dafb94827dd4baddf9ec1000c8a9, type: 2}
