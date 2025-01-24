@@ -10,12 +10,13 @@ namespace Yapper
         public Material[] faceMaterials;
         public Material[] tShirtMaterials;
         public Material[] shoesMaterials;
+        public Material[] skinMaterials;
         public GameObject[] hairObjects;
         public GameObject[] hatObjects;
         void Start()
         {
             GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
-            Material face, shoes, shirt;
+            Material face, shoes, shirt, skin;
             GameObject hair, hat;
             foreach (GameObject yapperObj in yapperObjects)
             {
@@ -34,11 +35,13 @@ namespace Yapper
                     shoes = shoesMaterials[Random.Range(0,shoesMaterials.Length)];
                     hair = hairObjects[Random.Range(0,hairObjects.Length)];
                     hat = hatObjects[Random.Range(0,hatObjects.Length)];
+                    skin = skinMaterials[Random.Range(0,skinMaterials.Length)];
                     if (!_allYappers.Any(yapper => (yapper.Face == face &&
                                                    yapper.Shoes == shoes &&
                                                    yapper.Hair == hair &&
                                                    yapper.Hat == hat &&
-                                                   yapper.Shirt == shirt) ||
+                                                   yapper.Shirt == shirt &&
+                                                   yapper.Skin == skin) ||
                                                    yapper.Speech == fullSpeech)) break;
                 }
                 ThoughtBubble tBubble = yapperObj.GetComponentInChildren<ThoughtBubble>();
@@ -61,7 +64,7 @@ namespace Yapper
     {
         public string Speech;
         public GameObject Person;
-        public Material Face, Shirt, Shoes;
+        public Material Face, Shirt, Shoes, Skin;
         public GameObject Hat, Hair;
     }
 }
