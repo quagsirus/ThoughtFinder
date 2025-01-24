@@ -1,7 +1,6 @@
 using Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -39,13 +38,13 @@ namespace Player
             {
                 var velocity = transform.right * (_movement.x * _movementSpeed)
                                     + transform.forward * (_movement.y * _movementSpeed)
-                                    + Vector3.down * _verticalVelocity;
+                                    + Vector3.up * _verticalVelocity;
                 characterController.Move(velocity * Time.deltaTime);
             }
 
             if (_look != Vector2.zero)
             {
-                transform.Rotate(Vector3.up * _look.x * lookSensitivity);
+                transform.Rotate(Vector3.up * (_look.x * lookSensitivity));
                 cameraTransform.rotation *= Quaternion.Euler(-_look.y * Time.deltaTime, 0, 0);
             }
         }
@@ -68,12 +67,14 @@ namespace Player
 
         void Inputs.IPlayerActions.OnJump(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            if (!context.ReadValueAsButton()) return;
+            if (!characterController.isGrounded) return;
+            _verticalVelocity += 10;
         }
 
         void Inputs.IPlayerActions.OnSprint(InputAction.CallbackContext context)
         {
-            _movementSpeed = context.ReadValue<bool>() ? runSpeed : walkSpeed;
+            _movementSpeed = context.ReadValueAsButton() ? runSpeed : walkSpeed;
         }
         #endregion
     }
