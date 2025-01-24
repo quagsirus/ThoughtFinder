@@ -2861,7 +2861,7 @@ GameObject:
   - component: {fileID: 7828363203070559851}
   m_Layer: 0
   m_Name: Yapper
-  m_TagString: Untagged
+  m_TagString: Yapper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3714,7 +3714,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 192f9b80bb6c49c48a7422fde9ef6b5d, type: 2}
+  - {fileID: 2100000, guid: d9ac52de5cd6a524887d6b368021409d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
