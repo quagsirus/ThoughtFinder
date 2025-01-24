@@ -25,6 +25,7 @@ namespace Player
         {
             _inputs = new Inputs();
             _inputs.Player.SetCallbacks(this);
+            Cursor.lockState = CursorLockMode.Locked;
             
             _movementSpeed = walkSpeed;
         }
@@ -37,17 +38,17 @@ namespace Player
         {
             if (_movement != Vector2.zero || !Mathf.Approximately(_verticalVelocity, downForce))
             {
-                _verticalVelocity = characterController.isGrounded ? downForce : _verticalVelocity + gravity * Time.deltaTime;
                 var velocity = transform.right * (_movement.x * _movementSpeed)
                                     + transform.forward * (_movement.y * _movementSpeed)
                                     + Vector3.up * _verticalVelocity;
                 characterController.Move(velocity * Time.deltaTime);
+                _verticalVelocity = characterController.isGrounded ? downForce : _verticalVelocity + gravity * Time.deltaTime;
             }
 
             if (_look != Vector2.zero)
             {
-                transform.Rotate(Vector3.up * (_look.x * lookSensitivity));
-                cameraTransform.rotation *= Quaternion.Euler(-_look.y * Time.deltaTime, 0, 0);
+                transform.Rotate(Vector3.up * (_look.x * lookSensitivity * Time.deltaTime));
+                cameraTransform.Rotate(Vector3.left * (_look.y * lookSensitivity * Time.deltaTime));
             }
         }
         

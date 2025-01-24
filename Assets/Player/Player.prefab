@@ -153,6 +153,7 @@ MonoBehaviour:
   faceMaterials: []
   tShirtMaterials: []
   shoesMaterials: []
+  skinMaterials: []
   hairObjects: []
   hatObjects: []
 --- !u!1 &7037603478496232654
@@ -286,7 +287,7 @@ MonoBehaviour:
   gravity: -35
   walkSpeed: 10
   runSpeed: 17.5
-  lookSensitivity: 0.1
+  lookSensitivity: 8
 --- !u!143 &4523023399713012151
 CharacterController:
   m_ObjectHideFlags: 0
