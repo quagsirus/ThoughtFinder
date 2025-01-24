@@ -9,16 +9,6 @@ public class YapperBuilder : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer bodyRenderer;
     [SerializeField] private Transform headBone;
     [SerializeField] private Material highlights;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void BuildYapper(Material face, Material shirt, Material shoes, Material skin, GameObject hair, GameObject hat)
     {
