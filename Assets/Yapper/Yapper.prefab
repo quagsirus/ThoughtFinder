@@ -2903,6 +2903,7 @@ MonoBehaviour:
   tShirtRenderer: {fileID: 7658650881581359211}
   bodyRenderer: {fileID: 349204384970278062}
   headBone: {fileID: 2534128024849456537}
+  highlights: {fileID: 2100000, guid: 8292ff68dac254a428357715e134f081, type: 2}
 --- !u!1 &7564793466018333118
 GameObject:
   m_ObjectHideFlags: 0
