@@ -45,6 +45,7 @@ namespace Yapper
                 }
                 ThoughtBubble tBubble = yapperObj.GetComponentInChildren<ThoughtBubble>();
                 tBubble.SetYap(fullSpeech);
+                yapperObj.GetComponent<YapperBuilder>().BuildYapper(face, shirt, shoes, skin, hair, hat);
                 _allYappers.Add(new YapperData
                 {
                     Person = yapperObj,

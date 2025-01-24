@@ -2859,6 +2859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828363203070559851}
+  - component: {fileID: 157825006471583704}
   m_Layer: 0
   m_Name: Yapper
   m_TagString: Yapper
@@ -2886,6 +2887,22 @@ Transform:
   - {fileID: 766234333587310362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &157825006471583704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487303064705227985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c419842ba97734b998865beaf2a144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceRenderer: {fileID: 6765734941221598906}
+  tShirtRenderer: {fileID: 7658650881581359211}
+  bodyRenderer: {fileID: 349204384970278062}
+  headBone: {fileID: 2534128024849456537}
 --- !u!1 &7564793466018333118
 GameObject:
   m_ObjectHideFlags: 0
