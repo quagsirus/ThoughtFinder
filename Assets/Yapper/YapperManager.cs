@@ -1,37 +1,67 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class YapperManager : MonoBehaviour
+namespace Yapper
 {
-    private List<YapperData> _allYappers = new List<YapperData>();
-    public static List<Material> _materials;
-    void Start()
+    public class YapperManager : MonoBehaviour
     {
-        GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
-        foreach (GameObject yapperObj in yapperObjects)
+        private readonly List<YapperData> _allYappers = new();
+        public Material[] faceMaterials;
+        public Material[] tShirtMaterials;
+        public Material[] shoesMaterials;
+        public GameObject[] hairObjects;
+        public GameObject[] hatObjects;
+        void Start()
         {
-            string fullSpeech = "";
-            for (int i = 0; i < 3; i++)
+            GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
+            Material face, shoes, shirt;
+            GameObject hair, hat;
+            foreach (GameObject yapperObj in yapperObjects)
             {
-                char c = (char)('a' + Random.Range(0,26));
-                if (Random.Range(0,2) == 1) c = char.ToUpper(c);
-                fullSpeech += c;
+                string fullSpeech = "";
+                
+                while (true)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        char c = (char)('a' + Random.Range(0,26));
+                        if (Random.Range(0,2) == 1) c = char.ToUpper(c);
+                        fullSpeech += c;
+                    }
+                    face = faceMaterials[Random.Range(0,faceMaterials.Length)];
+                    shirt = tShirtMaterials[Random.Range(0,tShirtMaterials.Length)];
+                    shoes = shoesMaterials[Random.Range(0,shoesMaterials.Length)];
+                    hair = hairObjects[Random.Range(0,hairObjects.Length)];
+                    hat = hatObjects[Random.Range(0,hatObjects.Length)];
+                    if (!_allYappers.Any(yapper => (yapper.Face == face &&
+                                                   yapper.Shoes == shoes &&
+                                                   yapper.Hair == hair &&
+                                                   yapper.Hat == hat &&
+                                                   yapper.Shirt == shirt) ||
+                                                   yapper.Speech == fullSpeech)) break;
+                }
+                ThoughtBubble tBubble = yapperObj.GetComponentInChildren<ThoughtBubble>();
+                tBubble.SetYap(fullSpeech);
+                _allYappers.Add(new YapperData
+                {
+                    Speech = fullSpeech,
+                    Person = yapperObj,
+                    Face = face,
+                    Shirt = shirt,
+                    Shoes = shoes,
+                    Hair = hair,
+                    Hat = hat,
+                });
             }
-            ThoughtBubble tBubble = yapperObj.GetComponentInChildren<ThoughtBubble>();
-            tBubble.SetYap(fullSpeech);
-            _allYappers.Add(new YapperData
-            {
-                Speech = fullSpeech,
-                Person = yapperObj
-            });
         }
     }
+
+    public record YapperData
+    {
+        public string Speech;
+        public GameObject Person;
+        public Material Face, Shirt, Shoes;
+        public GameObject Hat, Hair;
+    }
 }
-
-public record YapperData
-{
-    public string Speech;
-    public GameObject Person;
-}
-
-
