@@ -72,7 +72,7 @@ namespace Player
 
         void Inputs.IPlayerActions.OnInteract(InputAction.CallbackContext context)
         {
-            
+            throw new System.NotImplementedException();
         }
 
         void Inputs.IPlayerActions.OnJump(InputAction.CallbackContext context)
