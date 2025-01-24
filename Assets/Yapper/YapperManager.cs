@@ -6,25 +6,23 @@ namespace Yapper
 {
     public class YapperManager : MonoBehaviour
     {
+        public YapperData CorrectYapper;
         private readonly List<YapperData> _allYappers = new();
-        public Material[] faceMaterials;
-        public Material[] tShirtMaterials;
-        public Material[] shoesMaterials;
-        public Material[] skinMaterials;
-        public GameObject[] hairObjects;
-        public GameObject[] hatObjects;
-        void Start()
+        
+        [SerializeField] private Material[] faceMaterials, shoesMaterials, skinMaterials, tShirtMaterials;
+        [SerializeField] private GameObject[] hairObjects, hatObjects;
+
+        private void Awake()
         {
             GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
             Material face, shoes, shirt, skin;
             GameObject hair, hat;
             foreach (GameObject yapperObj in yapperObjects)
             {
-                string fullSpeech = "";
-                break;
-                
+                string fullSpeech;
                 while (true)
                 {
+                    fullSpeech = "";
                     for (int i = 0; i < 3; i++)
                     {
                         char c = (char)('a' + Random.Range(0,26));
@@ -34,9 +32,9 @@ namespace Yapper
                     face = faceMaterials[Random.Range(0,faceMaterials.Length)];
                     shirt = tShirtMaterials[Random.Range(0,tShirtMaterials.Length)];
                     shoes = shoesMaterials[Random.Range(0,shoesMaterials.Length)];
+                    skin = skinMaterials[Random.Range(0,skinMaterials.Length)];
                     hair = hairObjects[Random.Range(0,hairObjects.Length)];
                     hat = hatObjects[Random.Range(0,hatObjects.Length)];
-                    skin = skinMaterials[Random.Range(0,skinMaterials.Length)];
                     if (!_allYappers.Any(yapper => (yapper.Face == face &&
                                                    yapper.Shoes == shoes &&
                                                    yapper.Hair == hair &&
@@ -49,23 +47,25 @@ namespace Yapper
                 tBubble.SetYap(fullSpeech);
                 _allYappers.Add(new YapperData
                 {
-                    Speech = fullSpeech,
                     Person = yapperObj,
+                    Speech = fullSpeech,
                     Face = face,
                     Shirt = shirt,
                     Shoes = shoes,
+                    Skin = skin,
                     Hair = hair,
                     Hat = hat,
                 });
             }
+            CorrectYapper = _allYappers[Random.Range(0, _allYappers.Count)];
         }
     }
 
     public record YapperData
     {
-        public string Speech;
         public GameObject Person;
+        public string Speech;
         public Material Face, Shirt, Shoes, Skin;
-        public GameObject Hat, Hair;
+        public GameObject Hair, Hat;
     }
 }
