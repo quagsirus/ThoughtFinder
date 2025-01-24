@@ -10,14 +10,14 @@ namespace Yapper
         public int incorrectGuesses = 0;
         
         private readonly List<YapperData> _allYappers = new();
-        [SerializeField] private ThoughtBubble fountainBubble;
+        private ThoughtBubble _fountainBubble;
         
         [SerializeField] private Material[] faceMaterials, shoesMaterials, skinMaterials, tShirtMaterials;
         [SerializeField] private GameObject[] hairObjects, hatObjects;
 
         private void Awake()
         {
-            fountainBubble = GameObject.FindWithTag("FountainBubble").GetComponent<ThoughtBubble>();
+            _fountainBubble = GameObject.FindWithTag("FountainBubble").GetComponent<ThoughtBubble>();
             GameObject[] yapperObjects = GameObject.FindGameObjectsWithTag("Yapper");
             Material face, shoes, shirt, skin;
             GameObject hair, hat;
@@ -63,7 +63,7 @@ namespace Yapper
                 });
             }
             CorrectYapper = _allYappers[Random.Range(0, _allYappers.Count)];
-            fountainBubble.SetYap(CorrectYapper.Speech);
+            _fountainBubble.SetYap(CorrectYapper.Speech);
         }
     }
 

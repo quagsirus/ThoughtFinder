@@ -10,6 +10,7 @@ namespace Player
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private YapperManager yapperManager;
+        private GameObject _victoryScreen;
         
         private Inputs _inputs;
         private Vector2 _look;
@@ -26,6 +27,8 @@ namespace Player
 
         private void Awake()
         {
+            _victoryScreen = GameObject.Find("VictoryScreen");
+            _victoryScreen.SetActive(false);
             _inputs = new Inputs();
             _inputs.Player.SetCallbacks(this);
             Cursor.lockState = CursorLockMode.Locked;
@@ -58,6 +61,14 @@ namespace Player
                 cameraTransform.localRotation = Quaternion.Euler(_cameraXRotation, 0, 0);
             }
         }
+
+        public void Victory()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            _inputs.Player.Disable();
+            _victoryScreen.SetActive(true);
+            _victoryScreen.GetComponent<VictoryScreen>().UpdateStats();
+        }
         
         #region Input Callbacks
         void Inputs.IPlayerActions.OnMove(InputAction.CallbackContext context)
@@ -83,7 +94,7 @@ namespace Player
                     closestDistance = Vector3.Distance(yapper.transform.position, cameraTransform.position);
                 }
             }
-            closestYapper.GetComponentInChildren<ThoughtBubble>().CheckYap();
+            closestYapper?.GetComponentInChildren<ThoughtBubble>().CheckYap();
         }
 
         void Inputs.IPlayerActions.OnJump(InputAction.CallbackContext context)

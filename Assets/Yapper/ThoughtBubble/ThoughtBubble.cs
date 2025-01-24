@@ -17,8 +17,10 @@ public class ThoughtBubble : MonoBehaviour
     [SerializeField] private Animator animator;
     private Coroutine _colourCoroutine;
     private YapperManager _yapperManager;
+    public static int IncorrectGuesses = 0;
     void Start()
     {
+        IncorrectGuesses = 0; 
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _yapperManager = GameObject.FindGameObjectWithTag("Player").GetComponent<YapperManager>();
     }
@@ -67,7 +69,11 @@ public class ThoughtBubble : MonoBehaviour
         {
             _colourCoroutine = StartCoroutine(CorrectYap());
         }
-        else _colourCoroutine = StartCoroutine(IncorrectYap());
+        else
+        {
+            IncorrectGuesses++;
+            _colourCoroutine = StartCoroutine(IncorrectYap());
+        }
     }
 
     private IEnumerator CorrectYap()
@@ -75,12 +81,11 @@ public class ThoughtBubble : MonoBehaviour
         textTMP.color = Color.green;
         yield return new WaitForSeconds(0.8f);
         textTMP.color = Color.black;
-        // do some kind of victory thing somehow
+        _playerController.Victory();
     }
 
     private IEnumerator IncorrectYap()
     {
-        _yapperManager.incorrectGuesses++;
         textTMP.color = Color.red;
         yield return new WaitForSeconds(0.8f);
         textTMP.color = Color.black;
